@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{294E6228-E4A0-4079-BB3F-C661D8FD5AEB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <OutputPath>.mono\temp\bin\$(Configuration)</OutputPath>
+    <RootNamespace>ActionRPG</RootNamespace>
+    <AssemblyName>Action RPG</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <BaseIntermediateOutputPath>.mono\temp\obj</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(Configuration)</IntermediateOutputPath>
+    <GodotProjectGeneratorVersion>1.0.0.0</GodotProjectGeneratorVersion>
+    <ApiConfiguration Condition=" '$(Configuration)' != 'ExportRelease' ">Debug</ApiConfiguration>
+    <ApiConfiguration Condition=" '$(Configuration)' == 'ExportRelease' ">Release</ApiConfiguration>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ExportDebug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ExportRelease|AnyCPU' ">
+    <DebugType>portable</DebugType>
+    <Optimize>true</Optimize>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TOOLS;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GodotSharp">
+      <Private>False</Private>
+      <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="GodotSharpEditor" Condition=" '$(Configuration)' == 'Debug' ">
+      <Private>False</Private>
+      <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharpEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Components\Actions\IAction.cs" />
+    <Compile Include="Core\Components\Actions\IdleAction.cs" />
+    <Compile Include="Core\Components\Actions\InteractionData.cs" />
+    <Compile Include="Core\Components\Actions\MoveForwardAction.cs" />
+    <Compile Include="Core\Components\Actions\TakeDamageAction.cs" />
+    <Compile Include="Core\Components\ComponentIndex.cs" />
+    <Compile Include="Core\Components\DamageComponent.cs" />
+    <Compile Include="Core\Components\HealthComponent.cs" />
+    <Compile Include="Core\Components\IComponent.cs" />
+    <Compile Include="Core\Components\MovementComponent.cs" />
+    <Compile Include="Core\Items\Item.cs" />
+    <Compile Include="Core\Items\ItemType.cs" />
+    <Compile Include="Core\Items\Weapon\Sword.cs" />
+    <Compile Include="Core\Items\Weapon\Weapon.cs" />
+    <Compile Include="Core\StateMachine\IState.cs" />
+    <Compile Include="Core\StateMachine\StateMachine.cs" />
+    <Compile Include="Core\StateMachine\StatesIndex.cs" />
+    <Compile Include="NodeComponents\HitBox.cs" />
+    <Compile Include="Player\Player.cs" />
+    <Compile Include="Player\PlayerController.cs" />
+    <Compile Include="Player\PlayerState.cs" />
+    <Compile Include="Player\States\IPlayerState.cs" />
+    <Compile Include="Player\States\PlayerAttackState.cs" />
+    <Compile Include="Player\States\PlayerIdleState.cs" />
+    <Compile Include="Player\States\PlayerMovingState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="World\Grass.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies">
+      <Version>1.0.0</Version>
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

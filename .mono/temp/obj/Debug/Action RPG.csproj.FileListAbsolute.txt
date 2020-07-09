@@ -1,0 +1,5 @@
+C:\Users\migue\Documents\ActionRPG\.mono\temp\bin\Debug\Action RPG.dll
+C:\Users\migue\Documents\ActionRPG\.mono\temp\bin\Debug\Action RPG.pdb
+C:\Users\migue\Documents\ActionRPG\.mono\temp\obj\Debug\Action RPG.csprojAssemblyReference.cache
+C:\Users\migue\Documents\ActionRPG\.mono\temp\obj\Debug\Action RPG.dll
+C:\Users\migue\Documents\ActionRPG\.mono\temp\obj\Debug\Action RPG.pdb
