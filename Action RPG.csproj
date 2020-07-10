@@ -71,6 +71,7 @@
     <Compile Include="Core\StateMachine\StatesIndex.cs" />
     <Compile Include="NodeComponents\AttackArea.cs" />
     <Compile Include="NodeComponents\HitBox.cs" />
+    <Compile Include="NodeComponents\HurtBox.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="Player\PlayerController.cs" />
     <Compile Include="Player\PlayerState.cs" />

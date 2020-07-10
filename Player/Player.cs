@@ -37,7 +37,7 @@ namespace ActionRPG
 
 
             this._attackArea = GetNode<AttackArea>("./AttackArea");
-            this._attackArea.SetWeapon(new Sword(5, 10));
+            this._attackArea.SetWeapon(new Sword(10, 10));
             // Get Animation components (nodos). 
             this._animationTree = GetNode<AnimationTree>("./AnimationTree");
             this._animationTree.Active = true;
@@ -64,7 +64,6 @@ namespace ActionRPG
             // Update the player state machine
             this._stateMachine.Update(delta);
 
-
             // play animations according to components data
             PlayAnimations();
         }
@@ -80,7 +79,6 @@ namespace ActionRPG
                 this.MovementComponent.ItsMovingBackward = Input.IsActionPressed("ui_down");
                 this.MovementComponent.ItsMovingForward = Input.IsActionPressed("ui_up");
             }
-
 
             this.DamageComponent.ItsAttacking = Input.IsActionPressed("attack");
         }
@@ -110,11 +108,10 @@ namespace ActionRPG
                     break;
             }
         }
-        
-        public void DisableAttack(){
+
+        public void DisableAttack()
+        {
             this._attackArea.DisabledHitBox();
         }
     }
-
-   
 }
