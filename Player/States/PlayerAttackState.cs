@@ -18,14 +18,15 @@ namespace ActionRPG.States
             {
                 return StatesIndex.Idle;
             }
+
             target.MovementComponent.Restart();
 
-            return  StatesIndex.Attack;
+            return StatesIndex.Attack;
         }
 
         public void OnLeave(Player target, float deltaTime)
         {
-            target.DisabledHitBox();
+            target.DisableAttack();
         }
     }
 }

@@ -15,15 +15,15 @@ namespace ActionRPG
         // Node Components
         private AnimationTree _animationTree = null;
         private AnimationNodeStateMachinePlayback _animationNodeStateMachinePlayback = null;
-        private Position2D _hitBoxPosition;
+        private AttackArea _attackArea;
 
         // State handlers
         private StateMachine<Player> _stateMachine;
 
         // Data Components
-        public readonly MovementComponent MovementComponent = new MovementComponent();
+        public readonly MovementComponent MovementComponent = new MovementComponent(80);
         public readonly DamageComponent DamageComponent = new DamageComponent();
-
+        public readonly HealthComponent HealthComponent = new HealthComponent(100);
 
         public override void _Ready()
         {
@@ -36,8 +36,8 @@ namespace ActionRPG
                 .AddState(new PlayerIdleState());
 
 
-            this._hitBoxPosition = GetNode<Position2D>("./HitBox");
-            this.EquipWeapon();
+            this._attackArea = GetNode<AttackArea>("./AttackArea");
+            this._attackArea.SetWeapon(new Sword(5, 10));
             // Get Animation components (nodos). 
             this._animationTree = GetNode<AnimationTree>("./AnimationTree");
             this._animationTree.Active = true;
@@ -52,7 +52,7 @@ namespace ActionRPG
 
             var v = MovementComponent.Velocity;
             if (v == Vector2.Zero) return;
-            UpdateHitBox(v);
+            this._attackArea.UpdateOrientation(v);
         }
 
 
@@ -110,39 +110,11 @@ namespace ActionRPG
                     break;
             }
         }
-
-        private void UpdateHitBox(Vector2 v)
-        {
-            if (v.x > 0)
-            {
-                this._hitBoxPosition.RotationDegrees = 180f;
-            }
-            else if (v.x < 0)
-            {
-                this._hitBoxPosition.RotationDegrees = 0f;
-            }
-            else if (v.y > 0)
-            {
-                this._hitBoxPosition.RotationDegrees = 270f;
-            }
-            else
-            {
-                this._hitBoxPosition.RotationDegrees = 90f;
-            }
-        }
-
-        // TODO move to the hitbox it self.
-        public void DisabledHitBox()
-        {
-            var area = this._hitBoxPosition.GetChild<Area2D>(0);
-            var collider = area.GetChild<CollisionShape2D>(0);
-            collider.Disabled = true;
-        }
-
-        public void EquipWeapon()
-        {
-            var hitBox = this._hitBoxPosition.GetChild<HitBox>(0);
-            hitBox.Weapon = new Sword(5, 10);
+        
+        public void DisableAttack(){
+            this._attackArea.DisabledHitBox();
         }
     }
+
+   
 }

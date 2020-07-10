@@ -4,7 +4,12 @@ namespace ActionRPG.Core.Components
 {
     public class MovementComponent : IComponent
     {
-        public int Speed = 60;
+        public MovementComponent(int speed)
+        {
+            Speed = speed;
+        }
+
+        public readonly int Speed;
         public Vector2 Velocity;
         public ComponentIndex Code => ComponentIndex.Movement;
 

@@ -25,7 +25,7 @@ tracks/0/keys = {
 "values": [ 36, 37, 38, 39 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HitBox/HitBox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("AttackArea/HitBox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -55,7 +55,7 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HitBox/HitBox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("AttackArea/HitBox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -84,7 +84,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 26, 27 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HitBox/HitBox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("AttackArea/HitBox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -113,7 +113,7 @@ tracks/0/keys = {
 "values": [ 28, 29, 30, 31 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HitBox/HitBox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("AttackArea/HitBox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -388,16 +388,16 @@ parameters/Attack1/blend_position = Vector2( 0, 0 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Run/blend_position = Vector2( 0, 0 )
 
-[node name="HitBox" parent="." instance=ExtResource( 3 )]
+[node name="AttackArea" parent="." instance=ExtResource( 3 )]
 rotation = 3.14159
 
-[node name="HitBox" parent="HitBox" index="0"]
+[node name="HitBox" parent="AttackArea" index="0"]
 collision_layer = 4
 collision_mask = 8
 
-[node name="CollisionShape2D" parent="HitBox/HitBox" index="0"]
+[node name="CollisionShape2D" parent="AttackArea/HitBox" index="0"]
 position = Vector2( -18.0567, 1.09134 )
 shape = SubResource( 35 )
 disabled = true
 
-[editable path="HitBox"]
+[editable path="AttackArea"]
