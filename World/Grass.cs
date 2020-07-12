@@ -11,5 +11,19 @@ public class Grass : Node2D
     {
         this.hurtBox = this.GetNode<HurtBox>("./HurtBox");
         this.hurtBox.AttackHealthComponent(this.HealthComponent);
+        this.hurtBox.OnHurtHandler = this.UpdateHealth;
+    }
+
+
+    public void UpdateHealth(InteractionData<HealthComponent> data)
+    {
+        if (this.HealthComponent.HealthPoints <= 0)
+        {
+            QueueFree();
+        }
+        else
+        {
+            Console.WriteLine("Tes salvaste");
+        }
     }
 }

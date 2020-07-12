@@ -4,6 +4,7 @@ using ActionRPG.Core.Items;
 
 public class AttackArea : Position2D
 {
+    
     private HitBox _hitBox;
    
     // Called when the node enters the scene tree for the first time.

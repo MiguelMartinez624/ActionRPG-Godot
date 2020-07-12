@@ -52,6 +52,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AreaPortal.cs" />
     <Compile Include="Core\Components\Actions\IAction.cs" />
     <Compile Include="Core\Components\Actions\IdleAction.cs" />
     <Compile Include="Core\Components\Actions\InteractionData.cs" />

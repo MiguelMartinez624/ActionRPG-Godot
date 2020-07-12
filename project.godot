@@ -16,13 +16,13 @@ _global_script_class_icons={
 [application]
 
 config/name="Action RPG"
-run/main_scene="res://World.tscn"
+run/main_scene="res://Level1.tscn"
 config/icon="res://icon.png"
 
 [display]
 
-window/size/width=320
-window/size/height=180
+window/size/width=640
+window/size/height=360
 window/size/test_width=640
 window/size/test_height=360
 window/stretch/mode="2d"
@@ -93,6 +93,7 @@ attack={
 2d_physics/layer_3="HitBox"
 2d_physics/layer_4="HurtBox"
 2d_physics/layer_5="Enemy"
+2d_physics/layer_6="WorldInteraction"
 
 [rendering]
 
