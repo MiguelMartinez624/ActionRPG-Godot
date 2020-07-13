@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Action RPG"
-run/main_scene="res://Level1.tscn"
+run/main_scene="res://World/Level1.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://Global.cs"
 
 [display]
 

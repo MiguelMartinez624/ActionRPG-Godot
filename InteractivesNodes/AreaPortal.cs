@@ -9,10 +9,11 @@ namespace ActionRPG
         [Export] public string AreaName;
 
 
-        public void OnAreaPortal_AreaEntered(Player area)
+        public void OnAreaPortal_AreaEntered(Player player)
         {
-            GetTree().ChangeScene($"res://World/{this.AreaName}.tscn");
-            // GetTree().GetRoot()
+            var global = (Global) GetNode("/root/Global");
+            global.GotoScene(player, $"res://World/{this.AreaName}.tscn");
+ 
         }
 
 //  }

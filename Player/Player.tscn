@@ -397,4 +397,8 @@ position = Vector2( -18.0567, 1.09134 )
 shape = SubResource( 35 )
 disabled = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
+
 [editable path="AttackArea"]

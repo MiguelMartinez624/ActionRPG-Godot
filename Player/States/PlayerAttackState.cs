@@ -1,5 +1,6 @@
 ﻿using System;
 using ActionRPG.Core.StateMachine;
+using Godot;
 
 namespace ActionRPG.States
 {
@@ -20,7 +21,8 @@ namespace ActionRPG.States
             }
 
             target.MovementComponent.Restart();
-
+            target.HealthComponent.HealthPoints -= 2;
+            GD.Print($"reamaining player life {target.HealthComponent.HealthPoints}");
             return StatesIndex.Attack;
         }
 

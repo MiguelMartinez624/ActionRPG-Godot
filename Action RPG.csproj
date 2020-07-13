@@ -52,7 +52,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AreaPortal.cs" />
+    <Compile Include="InteractivesNodes\AreaPortal.cs" />
     <Compile Include="Core\Components\Actions\IAction.cs" />
     <Compile Include="Core\Components\Actions\IdleAction.cs" />
     <Compile Include="Core\Components\Actions\InteractionData.cs" />
@@ -70,13 +70,14 @@
     <Compile Include="Core\StateMachine\IState.cs" />
     <Compile Include="Core\StateMachine\StateMachine.cs" />
     <Compile Include="Core\StateMachine\StatesIndex.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Levels\Level.cs" />
     <Compile Include="NodeComponents\AttackArea.cs" />
     <Compile Include="NodeComponents\HitBox.cs" />
     <Compile Include="NodeComponents\HurtBox.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="Player\PlayerController.cs" />
     <Compile Include="Player\PlayerState.cs" />
-    <Compile Include="Player\States\IPlayerState.cs" />
     <Compile Include="Player\States\PlayerAttackState.cs" />
     <Compile Include="Player\States\PlayerIdleState.cs" />
     <Compile Include="Player\States\PlayerMovingState.cs" />
