@@ -21,7 +21,7 @@ namespace ActionRPG.States
             }
 
             target.MovementComponent.Restart();
-            target.HealthComponent.HealthPoints -= 2;
+            target.HealthComponent.SetHealth(target.HealthComponent.HealthPoints - 2);
             GD.Print($"reamaining player life {target.HealthComponent.HealthPoints}");
             return StatesIndex.Attack;
         }

@@ -52,6 +52,8 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game.cs" />
+    <Compile Include="GUI\PlayerUI.cs" />
     <Compile Include="InteractivesNodes\AreaPortal.cs" />
     <Compile Include="Core\Components\Actions\IAction.cs" />
     <Compile Include="Core\Components\Actions\IdleAction.cs" />

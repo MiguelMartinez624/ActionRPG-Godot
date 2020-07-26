@@ -12,41 +12,37 @@ namespace ActionRPG
 
         public override void _Ready()
         {
-            Viewport root = GetTree().GetRoot();
-            CurrentScene = root.GetChild(root.GetChildCount() - 1);
         }
 
 
-        public void GotoScene(Player player, string sceneName)
+        public void GotoScene(Player player, string sceneName, string side)
         {
             this.Player = player;
-
-            CallDeferred(nameof(DeferredGotoScene), sceneName);
+            CallDeferred(nameof(DeferredGotoScene), sceneName, side);
         }
 
-        public void DeferredGotoScene(string path)
+        public void DeferredGotoScene(string path, string side)
         {
             try
             {
                 Console.WriteLine("Changing scene");
                 var prevScene = CurrentScene;
-                // It is now safe to remove the current scene
+                var game = GetTree().Root.GetNode("./Game");
+                // Load the new scene level
+                var newLevel = ResourceLoader.Load<PackedScene>(path).Instance();
 
+                // Remove level
+                game.RemoveChild(game.GetChild(game.GetChildCount() - 1));
 
-                var newScene = ResourceLoader.Load<PackedScene>(path);
-                CurrentScene = (Level) newScene.Instance();
-
-
-                GetTree().GetRoot().AddChild(CurrentScene);
-                GetTree().SetCurrentScene(CurrentScene);
-
+                // Removes al player de la scena
                 this.Player.GetParent().RemoveChild(this.Player);
-                Console.WriteLine(this.Player.GetParent());
-                var ysort = CurrentScene.GetNode<YSort>("./YSortEntities");
-                ysort?.AddChild(this.Player);
-                var level = (Level) this.CurrentScene;
-                this.Player.GlobalPosition = level.LeftEntryPosition;
-                prevScene.QueueFree();
+
+                // Get the root tree to and we add the new scene
+                game.AddChild(newLevel);
+
+                // Teletransport
+                var level = (Level) newLevel;
+                level.InsertPlayer(this.Player, side);
             }
             catch (Exception e)
             {
