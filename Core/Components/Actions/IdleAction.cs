@@ -16,7 +16,7 @@ namespace ActionRPG.Core.Components
                 return StatesIndex.MoveForward;
             }
 
-            target.Velocity = Vector2.Zero;
+            target.Velocity = Vector3.Zero;
             target.ItsMovingBackward = false;
             target.ItsMovingLeft = false;
             target.ItsMovingRight = false;

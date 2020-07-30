@@ -10,7 +10,7 @@ namespace ActionRPG.Core.Components
         }
 
         public readonly int Speed;
-        public Vector2 Velocity;
+        public Vector3 Velocity;
         public ComponentIndex Code => ComponentIndex.Movement;
 
         // 
@@ -21,7 +21,7 @@ namespace ActionRPG.Core.Components
 
         public void Restart()
         {
-            this.Velocity = Vector2.Zero;
+            this.Velocity = Vector3.Zero;
             ItsMovingForward = false;
             ItsMovingBackward = false;
             ItsMovingRight = false;

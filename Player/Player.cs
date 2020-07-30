@@ -8,7 +8,7 @@ using Godot.Collections;
 
 namespace ActionRPG
 {
-    public class Player : KinematicBody2D
+    public class Player : KinematicBody
     {
         [Export] public int Speed = 80;
 
@@ -36,13 +36,13 @@ namespace ActionRPG
                 .AddState(new PlayerIdleState());
 
 
-            this._attackArea = GetNode<AttackArea>("./AttackArea");
-            this._attackArea.SetWeapon(new Sword(10, 10));
+            // this._attackArea = GetNode<AttackArea>("./AttackArea");
+            // this._attackArea.SetWeapon(new Sword(10, 10));
             // Get Animation components (nodos). 
-            this._animationTree = GetNode<AnimationTree>("./AnimationTree");
-            this._animationTree.Active = true;
-            this._animationNodeStateMachinePlayback =
-                (AnimationNodeStateMachinePlayback) this._animationTree.Get("parameters/playback");
+            // this._animationTree = GetNode<AnimationTree>("./AnimationTree");
+            // this._animationTree.Active = true;
+            // this._animationNodeStateMachinePlayback =
+            //     (AnimationNodeStateMachinePlayback) this._animationTree.Get("parameters/playback");
         }
 
         public override void _PhysicsProcess(float delta)
@@ -51,8 +51,8 @@ namespace ActionRPG
             MovementComponent.Velocity = MoveAndSlide(MovementComponent.Velocity);
 
             var v = MovementComponent.Velocity;
-            if (v == Vector2.Zero) return;
-            this._attackArea.UpdateOrientation(v);
+            if (v == Vector3.Zero) return;
+            // this._attackArea.UpdateOrientation(v);
         }
 
 
@@ -85,28 +85,28 @@ namespace ActionRPG
 
         private void PlayAnimations()
         {
-            if (this.MovementComponent.Velocity != Vector2.Zero)
+            if (this.MovementComponent.Velocity != Vector3.Zero)
             {
-                _animationTree.Set("parameters/Idle/blend_position", MovementComponent.Velocity);
-                _animationTree.Set("parameters/Run/blend_position", MovementComponent.Velocity);
-                _animationTree.Set("parameters/Attack1/blend_position", MovementComponent.Velocity);
+                // _animationTree.Set("parameters/Idle/blend_position", MovementComponent.Velocity);
+                // _animationTree.Set("parameters/Run/blend_position", MovementComponent.Velocity);
+                // _animationTree.Set("parameters/Attack1/blend_position", MovementComponent.Velocity);
             }
 
-            switch (this._stateMachine.CurrentState?.Code)
-            {
-                case StatesIndex.Attack:
-                    _animationNodeStateMachinePlayback.Travel("Attack1");
-                    break;
-                case StatesIndex.Idle:
-                    _animationNodeStateMachinePlayback.Travel("Idle");
-                    break;
-                case StatesIndex.MoveForward:
-                    _animationNodeStateMachinePlayback.Travel("Run");
-                    break;
-                default:
-                    _animationNodeStateMachinePlayback.Travel("Idle");
-                    break;
-            }
+            // switch (this._stateMachine.CurrentState?.Code)
+            // {
+            //     case StatesIndex.Attack:
+            //         _animationNodeStateMachinePlayback.Travel("Attack1");
+            //         break;
+            //     case StatesIndex.Idle:
+            //         _animationNodeStateMachinePlayback.Travel("Idle");
+            //         break;
+            //     case StatesIndex.MoveForward:
+            //         _animationNodeStateMachinePlayback.Travel("Run");
+            //         break;
+            //     default:
+            //         _animationNodeStateMachinePlayback.Travel("Idle");
+            //         break;
+            // }
         }
 
         public void DisableAttack()

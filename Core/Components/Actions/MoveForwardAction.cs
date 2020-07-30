@@ -7,7 +7,7 @@ namespace ActionRPG.Core.Components
     {
         public StatesIndex Execute(MovementComponent target, float deltaTime)
         {
-            target.Velocity = Vector2.Zero;
+            target.Velocity = Vector3.Zero;
             var (itsMovingBackward, itsMovingForward, itsMovingLeft, itsMovingRight) = target;
             
             if (!itsMovingForward && !itsMovingLeft && !itsMovingRight && !itsMovingBackward)
