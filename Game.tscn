@@ -14,3 +14,5 @@ script = ExtResource( 2 )
 [node name="LevelTest" parent="." instance=ExtResource( 1 )]
 LeftEntryPosition = Vector3( 0, 0, -1 )
 RightEntryPosition = Vector3( 0, 0, 1 )
+UpRespawnPosition = Vector3( 0, 0, 11111 )
+DownRespawnPosition = Vector3( 0, 0, 22121 )

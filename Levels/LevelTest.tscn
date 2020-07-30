@@ -38,4 +38,7 @@ Side = "up"
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.102686, -0.121735 )
 shape = SubResource( 4 )
 
+[node name="UpPosition" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45979, 0.973979, -24.7564 )
+
 [editable path="Floor/AreaPortal"]

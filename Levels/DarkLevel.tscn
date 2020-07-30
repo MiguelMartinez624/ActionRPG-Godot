@@ -3,6 +3,9 @@
 [ext_resource path="res://Levels/Level.cs" type="Script" id=1]
 [ext_resource path="res://InteractivesNodes/AreaPortal.tscn" type="PackedScene" id=2]
 
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.185693, 7.20396, 0.0526402 )
+
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.196078, 0.2, 0.141176, 1 )
 
@@ -12,17 +15,23 @@ material = SubResource( 1 )
 [sub_resource type="ConcavePolygonShape" id=3]
 data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
 
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 0.185693, 7.20396, 0.098698 )
-
 [node name="LevelTest" type="Spatial"]
 script = ExtResource( 1 )
 HavePlayer = true
 UpRespawnPosition = Vector3( 0, 0, -0.5 )
 DownRespawnPosition = Vector3( 0, 0, -0.5 )
 
+[node name="AreaPortal" parent="." instance=ExtResource( 2 )]
+transform = Transform( 56.0099, 0, 0, 0, 0.5, 0, 0, 0, 53.4453, 0, 4.92584, 60.5549 )
+AreaName = "LevelTest"
+Side = "down"
+
+[node name="CollisionShape" parent="AreaPortal" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.102686, -0.121735 )
+shape = SubResource( 4 )
+
 [node name="Floor" type="MeshInstance" parent="."]
-transform = Transform( 26.9882, 0, 0, 0, 0.5, 0, 0, 0, 26.1605, 0, 0, 0 )
+transform = Transform( 56.01, 0, 0, 0, 0.5, 0, 0, 0, 53.4453, 0, 0, 0 )
 mesh = SubResource( 2 )
 material/0 = null
 
@@ -31,13 +40,7 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="Floor/StaticBody"]
 shape = SubResource( 3 )
 
-[node name="AreaPortal" parent="Floor" instance=ExtResource( 2 )]
-transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.624, -0.965188 )
-AreaName = "LevelTest"
-Side = "down"
+[node name="DownPosition" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34274, 0.945831, 45.9121 )
 
-[node name="CollisionShape" parent="Floor/AreaPortal" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.102686, -0.121735 )
-shape = SubResource( 4 )
-
-[editable path="Floor/AreaPortal"]
+[editable path="AreaPortal"]

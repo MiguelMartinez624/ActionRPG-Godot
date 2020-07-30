@@ -21,8 +21,6 @@ namespace ActionRPG
 
         public void InsertPlayer(Player player, string entryPoint)
         {
-         
-          
             var playerGlobalTransform = player.GlobalTransform;
             switch (entryPoint)
             {
@@ -33,16 +31,19 @@ namespace ActionRPG
                     playerGlobalTransform.origin = this.RightEntryPosition;
                     break;
                 case "down":
-                    playerGlobalTransform.origin = this.DownRespawnPosition;
+                    var up = GetNode<Area>("./UpPosition");
+                    player.GlobalTranslate(up.GlobalTransform.origin); 
                     break;
                 case "up":
-
-                    playerGlobalTransform.origin = this.UpRespawnPosition;
+                    var down = GetNode<Area>("./DownPosition");
+                    player.GlobalTranslate(down.GlobalTransform.origin); 
+                    
                     break;
                 default:
                     playerGlobalTransform.origin = this.InitialRespawnPosition;
                     break;
             }
+
             AddChild(player);
         }
     }
