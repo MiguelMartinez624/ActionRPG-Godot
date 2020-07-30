@@ -12,3 +12,5 @@ script = ExtResource( 2 )
 [node name="PlayerUI" parent="CanvasLayer" instance=ExtResource( 9 )]
 
 [node name="LevelTest" parent="." instance=ExtResource( 1 )]
+LeftEntryPosition = Vector3( 0, 0, -1 )
+RightEntryPosition = Vector3( 0, 0, 1 )

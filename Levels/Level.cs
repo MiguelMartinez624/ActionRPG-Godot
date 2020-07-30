@@ -9,6 +9,8 @@ namespace ActionRPG
         [Export] public bool HavePlayer;
         [Export] public Vector3 LeftEntryPosition;
         [Export] public Vector3 RightEntryPosition;
+        [Export] public Vector3 UpRespawnPosition;
+        [Export] public Vector3 DownRespawnPosition;
         [Export] public Vector3 InitialRespawnPosition { get; set; }
 
 
@@ -19,21 +21,29 @@ namespace ActionRPG
 
         public void InsertPlayer(Player player, string entryPoint)
         {
-           
-            AddChild(player);
+         
+          
+            var playerGlobalTransform = player.GlobalTransform;
+            switch (entryPoint)
+            {
+                case "left":
+                    playerGlobalTransform.origin = this.LeftEntryPosition;
+                    break;
+                case "right":
+                    playerGlobalTransform.origin = this.RightEntryPosition;
+                    break;
+                case "down":
+                    playerGlobalTransform.origin = this.DownRespawnPosition;
+                    break;
+                case "up":
 
-            // switch (entryPoint)
-            // {
-            //     case "left":
-            //         player = this.LeftEntryPosition;
-            //         break;
-            //     case "right":
-            //         player.GlobalPosition = this.RightEntryPosition;
-            //         break;
-            //     default:
-            //         player.GlobalPosition = this.InitialRespawnPosition;
-            //         break;
-            // }
+                    playerGlobalTransform.origin = this.UpRespawnPosition;
+                    break;
+                default:
+                    playerGlobalTransform.origin = this.InitialRespawnPosition;
+                    break;
+            }
+            AddChild(player);
         }
     }
 }
