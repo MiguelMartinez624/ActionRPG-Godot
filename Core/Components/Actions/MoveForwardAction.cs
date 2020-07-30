@@ -27,12 +27,12 @@ namespace ActionRPG.Core.Components
 
             if (itsMovingForward)
             {
-                target.Velocity.y += 1;
+                target.Velocity.z += 1;
             }
 
             if (itsMovingBackward)
             {
-                target.Velocity.y -= 1;
+                target.Velocity.z -= 1;
             }
 
             target.Velocity = target.Velocity.Normalized() * target.Speed;

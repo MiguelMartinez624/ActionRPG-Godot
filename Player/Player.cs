@@ -21,7 +21,7 @@ namespace ActionRPG
         private StateMachine<Player> _stateMachine;
 
         // Data Components
-        public readonly MovementComponent MovementComponent = new MovementComponent(180);
+        public readonly MovementComponent MovementComponent = new MovementComponent(40);
         public readonly DamageComponent DamageComponent = new DamageComponent();
         public readonly HealthComponent HealthComponent = new HealthComponent(100);
 
