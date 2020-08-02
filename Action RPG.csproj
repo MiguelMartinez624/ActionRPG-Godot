@@ -52,6 +52,8 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Items\EquipmentComponent.cs" />
+    <Compile Include="Core\Items\InventoryComponent.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GUI\PlayerUI.cs" />
     <Compile Include="InteractivesNodes\AreaPortal.cs" />

@@ -20,10 +20,12 @@ namespace ActionRPG
         // State handlers
         private StateMachine<Player> _stateMachine;
 
-        // Data Components
+        //  Components
         public readonly MovementComponent MovementComponent = new MovementComponent(40);
         public readonly DamageComponent DamageComponent = new DamageComponent();
         public readonly HealthComponent HealthComponent = new HealthComponent(100);
+        public readonly EquipmentComponent EquipmentComponent = new EquipmentComponent();
+        public readonly InventoryComponent InventoryComponent = new InventoryComponent();
 
         public override void _Ready()
         {
@@ -54,7 +56,6 @@ namespace ActionRPG
             if (v == Vector3.Zero) return;
             // this._attackArea.UpdateOrientation(v);
         }
-
 
         public override void _Process(float delta)
         {
@@ -111,7 +112,7 @@ namespace ActionRPG
 
         public void DisableAttack()
         {
-            this._attackArea.DisabledHitBox();
+            // this._attackArea.DisabledHitBox();
         }
     }
 }

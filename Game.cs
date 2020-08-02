@@ -17,8 +17,7 @@ public class Game : Node
                 var resource = ResourceLoader.Load<PackedScene>("./Player/Player.tscn");
                 Player = (Player) resource.Instance();
 
-                // Atach player componens to the UI
-    
+                // Attach player components to the UI
                 var playerUI = GetChild<CanvasLayer>(0).GetNode<PlayerUI>("./PlayerUI");
                 playerUI.AttackPlayerHealthToStatus(Player.HealthComponent);
             }
